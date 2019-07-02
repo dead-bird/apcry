@@ -6,8 +6,8 @@
   "scripts": {
     "prestart": "",
     "dev": "npm start",
-    "start": "nodemon --exec babel-node src/cry.js",
-    "serve": "npm run build && node dist/cry.js",
+    "start": "nodemon --exec babel-node src/index.js",
+    "serve": "npm run build && node dist/index.js",
     "build": "babel src -d dist"
   },
   "repository": {
