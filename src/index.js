@@ -14,10 +14,10 @@ app.use(function(req, res, next) {
 });
 
 app.get('/*', (req, res) => {
-  const text = decodeURI(req.originalUrl.substr(1));
+  const input = decodeURI(req.originalUrl.substr(1));
 
-  cry(text)
-    .then(message => res.json({ status: 200, message }))
+  cry(input)
+    .then(tears => res.json({ status: 200, input, tears }))
     .catch(e => res.status(e.status || 400).send(e));
 });
 
