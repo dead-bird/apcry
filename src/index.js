@@ -1,4 +1,5 @@
 import express from 'express';
+import cry from './cry';
 
 let app = express();
 
@@ -13,9 +14,11 @@ app.use(function(req, res, next) {
 });
 
 app.get('/*', (req, res) => {
-  console.log(req);
+  const text = decodeURI(req.originalUrl.substr(1));
 
-  return res.status(200).send(`you said: xxx`);
+  cry(text)
+    .then(message => res.json({ status: 200, message }))
+    .catch(e => res.status(e.status || 400).send(e));
 });
 
 app.listen(3002, () => console.log(`Listening on port 3002`));
