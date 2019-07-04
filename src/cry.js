@@ -7,96 +7,26 @@ export default text =>
     let endingPunctuation = ',.?!';
     let excitedPunctuation = '?!';
 
+    // mozilla docs rng
     function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    function isLetter(char) {
-      return letters.includes(char);
-    }
-
+    // faster methods than regex or array vowel check
     function isVowel(char) {
-      return vowels.includes(char);
+      return vowels.indexOf(char) >= 0 ? true : false;
     }
 
-    function isConsonant(char) {
-      return consonants.includes(char);
+    function endPunc(char) {
+      return endingPunctuation.indexOf(char) >= 0 ? true : false;
     }
 
-    function isPunctuation(char) {
-      return punctuation.includes(char);
+    function excPunc(char) {
+      return excitedPunctuation.indexOf(char) >= 0 ? true : false;
     }
 
-    function isEndingPunctuation(char) {
-      return endingPunctuation.includes(char);
-    }
-
-    function isExcitedPunctuation(char) {
-      return excitedPunctuation.includes(char);
-    }
-
-    function isApos(char) {
-      return char === "'";
-    }
-
-    function isPlease(index, string) {
-      if (index + 6 >= string.length) return false;
-      if (string.substring(index, index + 6) === 'please') return true;
-    }
-
-    function isYou(index, string) {
-      if (index + 3 >= string.length) return false;
-      if (string.substring(index, index + 3) === 'you') return true;
-    }
-
-    function isIng(index, string) {
-      if (index + 3 >= string.length) return false;
-      if (string.substring(index, index + 3) === 'ing') return true;
-    }
-
-    function isIDK(index, string) {
-      //I DON'T KNOW
-      if (index + 12 >= string.length) return false;
-      if (string.substring(index, index + 12) === "i don't know") return true;
-    }
-
-    function isTBH(index, string) {
-      //TO BE HONEST
-      if (index + 12 >= string.length) return false;
-      if (string.substring(index, index + 12) === 'to be honest') return true;
-    }
-
-    function isWordStart(index, string) {
-      if (index === string.length - 1) return false;
-      if (index === 0) return true;
-      if (
-        (string[index - 1] == ' ' ||
-          endingPunctuation.includes(string[index - 1])) &&
-        letters.includes(string[index])
-      )
-        return true;
-      return false;
-    }
-
-    function isWordEnd(index, string) {
-      if (index === 0) return false;
-      if (index === string.length - 1) return true;
-      if (
-        (string[index + 1] == ' ' ||
-          endingPunctuation.includes(string[index + 1])) &&
-        letters.includes(string[index])
-      )
-        return true;
-      return false;
-    }
-
-    function double(char) {
-      var multiply = getRandomInt(2, 4);
-      return Array(multiply).join(char);
-    }
-
-    function space(char) {
-      return ' ' + char;
+    function clone(char, min = 2, max = 4) {
+      return char.repeat(getRandomInt(min, max));
     }
 
     function swap(index, string) {
