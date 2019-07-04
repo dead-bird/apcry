@@ -2,60 +2,10 @@ export default text =>
   new Promise((resolve, reject) => {
     if (!text) reject({ status: 400, message: 'No text supplied' });
 
-    var letters = [
-      'a',
-      'b',
-      'c',
-      'd',
-      'e',
-      'f',
-      'g',
-      'h',
-      'i',
-      'j',
-      'k',
-      'l',
-      'm',
-      'n',
-      'o',
-      'p',
-      'q',
-      'r',
-      's',
-      't',
-      'u',
-      'v',
-      'w',
-      'x',
-      'y',
-      'z',
-    ];
-    var vowels = ['a', 'e', 'i', 'o', 'u'];
-    var consonants = [
-      'b',
-      'c',
-      'd',
-      'f',
-      'g',
-      'h',
-      'j',
-      'k',
-      'l',
-      'm',
-      'n',
-      'p',
-      'q',
-      'r',
-      's',
-      't',
-      'v',
-      'x',
-      'z',
-      'w',
-    ];
-    var punctuation = [',', '"', ';', '.', '!', '?'];
-    var endingPunctuation = [',', '.', '?', '!'];
-    var excitedPunctuation = ['?', '!'];
+    let vowels = 'aeiou';
+    let punctuation = `,";.!?'`;
+    let endingPunctuation = ',.?!';
+    let excitedPunctuation = '?!';
 
     function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
