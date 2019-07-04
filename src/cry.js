@@ -3,7 +3,7 @@ export default text =>
     if (!text) reject({ status: 400, message: 'No text supplied' });
 
     let vowels = 'aeiou';
-    let punctuation = `,";.!?'`;
+
     let endingPunctuation = ',.?!';
     let excitedPunctuation = '?!';
 
@@ -42,78 +42,43 @@ export default text =>
       return char + vowelChoice;
     }
 
-    function commaNonsense() {
-      var multiply = getRandomInt(2, 5);
-      return Array(multiply).join(',');
+    function cry(text) {
+      let newString = '';
+      newString = text
+        .split('')
+        .map(char => {
+          if (endPunc(char)) {
+            char = clone(char, 1, 4);
+          }
+          if (excPunc(char)) {
+            char = clone(char, 3, 7);
+          }
+          if (char === "'") {
+            char = clone(char, 0, 3);
+          }
+          // 20% chance to modify a character
+          if (getRandomInt(1, 10) > 8) {
+            // vowel warp 25%
+            // swap with random vowel
+            // letter swap 17%
+            // swap with letter ahead
+            // cons stutter 25%
+            // repeat char once
+            // spacing 17%
+            // add 1 space
+          }
+          return char;
+        })
+        .join('');
+
+      return newString;
     }
 
-    function semicolonNonsense() {
-      var multiply = getRandomInt(1, 4);
-      return Array(multiply).join(';');
-    }
+    // Lowercase the input
+    // Replace words that end in ing with in
+    // Loop over and mutate
+    text = text.toLowerCase().replace(/(\w+)(ing)/gm, '$1in');
+    text = cry(text);
 
-    var newString = '';
-    text = text.toLowerCase();
-    for (var i = 0; i < text.length; i++) {
-      // CASES
-      // please
-      if (isPlease(i, text)) {
-        newString += 'pls';
-        i += 6;
-      }
-      // ing
-      else if (isIng(i, text)) {
-        newString += 'in';
-        i += 3;
-      }
-      // you
-      else if (isYou(i, text)) {
-        newString += 'u';
-        i += 3;
-      }
-      // idk
-      else if (isIDK(i, text)) {
-        newString += 'idk';
-        i += 12;
-      }
-      // tbh
-      else if (isTBH(i, text)) {
-        newString += 'tbh';
-        i += 12;
-      }
-      // punctuation
-      else if (isEndingPunctuation(text[i]) && isWordEnd(i, text)) {
-        newString += commaNonsense();
-      } else if (isApos(text[i])) {
-        newString += semicolonNonsense();
-      } else if (isExcitedPunctuation(text[i])) {
-        newString += double(text[i]);
-        newString += double(text[i]);
-      }
-      // big if case to prevent totally garbled text
-      else if (getRandomInt(0, 10) > 8) {
-        // voewael waerping
-        if (isVowel(text[i]) && getRandomInt(0, 20) > 15) {
-          newString += vowelWarp(text[i]);
-        }
-        // letetr swapnig
-        else if (getRandomInt(0, 30) > 25) {
-          newString += swap(i, text);
-        }
-        // genneral ccccconssonant stutttttterrrr
-        else if (isConsonant(text[i]) && getRandomInt(0, 20) > 15) {
-          newString += double(text[i]);
-        }
-        // sud denly spac ing
-        else if (getRandomInt(0, 30) > 25) {
-          newString += space(text[i]);
-        } else {
-          newString += text[i];
-        }
-      } else {
-        newString += text[i];
-      }
-    }
-
-    resolve(newString);
+    resolve(text);
   });
