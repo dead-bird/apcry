@@ -16,7 +16,7 @@ app.use(function(req, res, next) {
 app.get('/*', (req, res) => {
   const input = decodeURI(req.originalUrl.substr(1));
 
-  cry(input)
+  cry(input.trim())
     .then(tears => res.json({ status: 200, input, tears }))
     .catch(e => res.status(e.status || 400).send(e));
 });
