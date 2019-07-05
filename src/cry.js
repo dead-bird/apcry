@@ -6,6 +6,7 @@ export default text =>
 
     let endingPunctuation = ',.?!';
     let excitedPunctuation = '?!';
+    let punctuation = `,.?!'`;
 
     // mozilla docs rng
     function getRandomInt(min, max) {
