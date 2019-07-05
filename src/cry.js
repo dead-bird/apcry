@@ -47,9 +47,10 @@ export default text =>
           if (excPunc(char)) {
             char = clone(char, 3, 7);
           }
-          if (char === "'") {
-            char = clone(char, 0, 3);
-          }
+            // 60% chance apos -> semi
+            if (char === "'" && getRandomInt(1, 10) > 4) {
+              char = clone(';', 1, 2);
+            }
           // 20% chance to modify a character
           if (getRandomInt(1, 10) > 8) {
             // vowel warp 25%
