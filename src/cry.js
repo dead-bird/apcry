@@ -70,9 +70,9 @@ export default text =>
               // 25% cons stutter (5% overall)
               if (getRandomInt(0, 20) > 15) {
                 // repeat char once
-                if (isVowel(char)) {
+                if (!isVowel(char)) {
                   //temp
-                  clone(char);
+                  char = clone(char);
                 }
               }
               // 17% add space (3.4% overall)
