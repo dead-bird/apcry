@@ -31,14 +31,6 @@ export default text =>
       return char.repeat(getRandomInt(min, max));
     }
 
-    function swap(index, string) {
-      var subStr = string.substring(index, index + 1);
-      return subStr
-        .split('')
-        .reverse()
-        .join('');
-    }
-
     function vowelWarp(char) {
       var vowelChoice = vowels[getRandomInt(0, vowels.length - 1)];
       return char + vowelChoice;
