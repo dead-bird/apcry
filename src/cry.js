@@ -37,30 +37,49 @@ export default text =>
     }
 
     function cry(text) {
+      // Loop over letters and mutate
       let newString = '';
       newString = text
         .split('')
         .map(char => {
-          if (endPunc(char)) {
-            char = clone(char, 1, 4);
-          }
-          if (excPunc(char)) {
-            char = clone(char, 3, 7);
-          }
+          // if not emoji or accented char then skip tp
+          // prevent mangling weird unicode chars / emoji
+          if (/[a-z0-9 ]/.test(char) || punctuation.indexOf(char) >= 0) {
+            // Clone amount based on punc type
+            if (endPunc(char)) {
+              char = clone(char, 1, 4);
+            }
+            if (excPunc(char)) {
+              char = clone(char, 3, 7);
+            }
             // 60% chance apos -> semi
             if (char === "'" && getRandomInt(1, 10) > 4) {
               char = clone(';', 1, 2);
             }
-          // 20% chance to modify a character
-          if (getRandomInt(1, 10) > 8) {
-            // vowel warp 25%
-            // swap with random vowel
-            // letter swap 17%
-            // swap with letter ahead
-            // cons stutter 25%
-            // repeat char once
-            // spacing 17%
-            // add 1 space
+
+            // 20% chance to mutate a character
+            if (getRandomInt(0, 10) > 8) {
+              // 25% add random vowel (5% overall)
+              if (getRandomInt(0, 20) > 15) {
+                // swap with random vowel
+              }
+              // 17% letter swap (3.4% overall)
+              if (getRandomInt(0, 30) > 25) {
+                // swap with letter ahead
+              }
+              // 25% cons stutter (5% overall)
+              if (getRandomInt(0, 20) > 15) {
+                // repeat char once
+                if (isVowel(char)) {
+                  //temp
+                  clone(char);
+                }
+              }
+              // 17% add space (3.4% overall)
+              if (getRandomInt(0, 30) > 25) {
+                char += ' ';
+              }
+            }
           }
           return char;
         })
@@ -71,7 +90,6 @@ export default text =>
 
     // Lowercase the input
     // Replace words that end in ing with in
-    // Loop over and mutate
     text = text.toLowerCase().replace(/(\w+)(ing)/gm, '$1in');
     text = cry(text);
 
