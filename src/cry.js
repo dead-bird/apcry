@@ -41,7 +41,7 @@ export default text =>
       let newString = '';
       newString = text
         .split('')
-        .map(char => {
+        .map((char, index, array) => {
           // if not emoji or accented char then skip tp
           // prevent mangling weird unicode chars / emoji
           if (/[a-z0-9]/.test(char) || punctuation.indexOf(char) >= 0) {
@@ -59,25 +59,29 @@ export default text =>
 
             // 20% chance to mutate a character
             if (getRandomInt(0, 10) > 8) {
-              // 25% add random vowel (5% overall)
-              if (getRandomInt(0, 20) > 15) {
-                // swap with random vowel
+              // 17% add space (3.4% overall)
+              if (getRandomInt(0, 30) > 25) {
+                char += ' ';
               }
               // 17% letter swap (3.4% overall)
-              if (getRandomInt(0, 30) > 25) {
+              else if (getRandomInt(0, 30) > 25) {
                 // swap with letter ahead
+                // remove next letter from data so no dupe
+                if (array[index + 1]) {
+                  char = array[index + 1] + char;
+                  array[index + 1] = '';
+                }
+              }
+              // 25% add random vowel (5% overall)
+              else if (getRandomInt(0, 20) > 15) {
+                // swap with random vowel
               }
               // 25% cons stutter (5% overall)
-              if (getRandomInt(0, 20) > 15) {
-                // repeat char once
+              else if (getRandomInt(0, 20) > 15) {
                 if (!isVowel(char)) {
                   //temp
                   char = clone(char);
                 }
-              }
-              // 17% add space (3.4% overall)
-              if (getRandomInt(0, 30) > 25) {
-                char += ' ';
               }
             }
           }
