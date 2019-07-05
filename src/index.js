@@ -13,6 +13,10 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.get('/favicon.ico', (req, res) => {
+  return false;
+});
+
 app.get('/*', (req, res) => {
   const input = decodeURI(req.originalUrl.substr(1));
 
