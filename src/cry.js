@@ -44,7 +44,7 @@ export default text =>
         .map(char => {
           // if not emoji or accented char then skip tp
           // prevent mangling weird unicode chars / emoji
-          if (/[a-z0-9 ]/.test(char) || punctuation.indexOf(char) >= 0) {
+          if (/[a-z0-9]/.test(char) || punctuation.indexOf(char) >= 0) {
             // Clone amount based on punc type
             if (endPunc(char)) {
               char = clone(char, 1, 4);
