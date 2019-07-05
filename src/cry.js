@@ -26,7 +26,8 @@ export default text =>
       return excitedPunctuation.indexOf(char) >= 0 ? true : false;
     }
 
-    function clone(char, min = 2, max = 4) {
+    function clone(char, min = 2, max = 2) {
+      // clones letter once if no min or max passed
       return char.repeat(getRandomInt(min, max));
     }
 
