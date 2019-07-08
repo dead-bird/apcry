@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "prestart": "",
-    "dev": "npm start",
-    "start": "nodemon --exec babel-node src/index.js",
-    "serve": "npm run build && node dist/index.js",
-    "build": "babel src -d dist"
+    "api:dev": "nodemon --exec babel-node api/index.js",
+    "api:serve": "npm run build && node dist/index.js",
+    "api:build": "babel api -d dist"
   },
   "repository": {
     "type": "git",
