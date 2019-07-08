@@ -1,3 +1,4 @@
+import limit from 'express-rate-limit';
 import express from 'express';
 import cry from './cry';
 
@@ -13,14 +14,20 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get('/favicon.ico', (req, res) => {
-  return false;
-});
+app.use(
+  limit({
+    message: { status: 429, message: 'alright there cowboy, time to stop 🤠' },
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+  })
+);
+
+app.get('/favicon.ico', () => false);
 
 app.get('/*', (req, res) => {
-  const input = decodeURI(req.originalUrl.substr(1));
+  const input = decodeURI(req.originalUrl.substr(1)).trim();
 
-  cry(input.trim())
+  cry(input)
     .then(tears => res.json({ status: 200, input, tears }))
     .catch(e => res.status(e.status || 400).send(e));
 });
