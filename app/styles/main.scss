@@ -1,2 +1,72 @@
 @import 'bootstrap/scss/bootstrap-reboot.scss';
 @import 'bootstrap/scss/bootstrap-grid.scss';
+
+$light: #e6e6e6;
+$dark: #2a2b2c;
+$primary: #03a9f4;
+
+body,
+html {
+  background-color: $dark;
+  color: $light;
+}
+
+.container {
+  max-width: 900px;
+}
+
+.speech {
+  display: block;
+  padding: 15px 20px;
+  min-height: 125px;
+  position: relative;
+  background: $primary;
+  border-radius: 0.4em;
+  color: $dark;
+  margin: 0;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 29px solid transparent;
+    margin-top: -29px;
+  }
+
+  &.left:after {
+    left: 0;
+    border-right-color: $primary;
+    border-left: 0;
+    margin-left: -29px;
+  }
+  &.right:after {
+    right: 0;
+    border-left-color: $primary;
+    border-right: 0;
+    margin-right: -29px;
+  }
+}
+
+.tears-input {
+  padding: 0;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  min-height: 85px;
+  outline: none;
+
+  &::placeholder {
+    color: $dark;
+  }
+}
+
+.sad-cat {
+  width: 250px;
+}
+
+.cat-contain {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
