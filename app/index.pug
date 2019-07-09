@@ -17,21 +17,10 @@ html(lang="en-GB")
   body
     .wrapper
       .container
-        p 💧 APCry is a cry-typing generator and open API for creating maximum tears on the fly
+        include components/intro.pug
+        include components/generator.pug
 
-        .row.align-items-center.cat-contain
-          .col-auto
-            img.sad-cat(src=require('./assets/sadcat.png'), alt="im ..just nrot crying youc're  cryinng")
-
-          .col
-            p Type in here
-            label.speech.left
-              textarea.tears-input(name="tears" placeholder="give me your tears coward")
-
-        .row.align-items-center.cat-contain
-          .col
-            p Tears come out here
-            div.speech.right ,give m..e yyourr teaars coward
-
-          .col-auto
-            img.sad-cat(src=require('./assets/crycat.png'), alt="im ..just nrot crying youc're  cryinng")
+        hr
+        
+        include components/api/requests.pug
+        include components/api/responses.pug

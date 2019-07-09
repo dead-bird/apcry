@@ -3,7 +3,7 @@
 
 $light: #e6e6e6;
 $dark: #2a2b2c;
-$primary: #03a9f4;
+$primary: $light;
 
 body,
 html {
@@ -27,7 +27,7 @@ html {
   padding: 15px 20px;
   min-height: 125px;
   position: relative;
-  background: $primary;
+  background: $light;
   border-radius: 0.4em;
   color: $dark;
   margin: 0;
@@ -44,13 +44,13 @@ html {
 
   &.left:after {
     left: 0;
-    border-right-color: $primary;
+    border-right-color: $light;
     border-left: 0;
     margin-left: -29px;
   }
   &.right:after {
     right: 0;
-    border-left-color: $primary;
+    border-left-color: $light;
     border-right: 0;
     margin-right: -29px;
   }
@@ -76,4 +76,17 @@ html {
 .cat-contain {
   margin-top: 60px;
   margin-bottom: 60px;
+}
+
+.hljs {
+  padding: 20px;
+  background-color: transparent;
+  border: 1px dashed $light;
+  margin-bottom: 30px;
+}
+
+hr {
+  margin-top: 45px;
+  margin-bottom: 45px;
+  border-width: 1px;
 }
