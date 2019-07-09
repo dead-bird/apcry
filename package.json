@@ -1,7 +1,7 @@
 {
   "name": "apcry",
   "version": "1.0.0",
-  "description": "An API f;;or ggeneRaating rcyyin gt;exxt",
+  "description": "APCry is a cry-typing generator and open API for creating maximum tears on the fly",
   "main": "index.js",
   "scripts": {
     "prestart": "",
@@ -44,7 +44,8 @@
     "css-loader": "^2.1.1",
     "express": "^4.17.1",
     "express-rate-limit": "^5.0.0",
-    "style-loader": "^0.23.1"
+    "style-loader": "^0.23.1",
+    "webmanifest-loader": "^0.3.0"
   },
   "engines": {
     "node": ">=6"

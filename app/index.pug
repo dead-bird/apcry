@@ -6,30 +6,32 @@ html(lang="en-GB")
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width, initial-scale=1")
 
-    //- link(rel="apple-touch-icon", sizes="180x180", href=require('./assets/favicon/apple-touch-icon.png'))
-    //- link(rel="icon", type="image/png", sizes="32x32", href=require('./assets/favicon/favicon-32x32.png'))
-    //- link(rel="icon", type="image/png", sizes="16x16", href=require('./assets/favicon/favicon-16x16.png'))
+    link(rel="apple-touch-icon", sizes="180x180", href=require('./assets/favicon/apple-touch-icon.png'))
+    link(rel="icon", type="image/png", sizes="32x32", href=require('./assets/favicon/favicon-32x32.png'))
+    link(rel="icon", type="image/png", sizes="16x16", href=require('./assets/favicon/favicon-16x16.png'))
     //- link(rel="manifest", href=require('./assets/favicon/site.webmanifest'))
-    //- link(rel="mask-icon", href=require('./assets/favicon/safari-pinned-tab.svg'), color="#fefefe")
-    //- meta(name="msapplication-TileColor", content="#fefefe")
-    //- meta(name="theme-color", content="#fefefe")
+    link(rel="mask-icon", href=require('./assets/favicon/safari-pinned-tab.svg'), color="#2a2b2c")
+    meta(name="msapplication-TileColor", content="#2a2b2c")
+    meta(name="theme-color", content="#2a2b2c")
+
   body
-    .container
-      h1 APCry 💧
-      h3 An API f;;or ggeneRaating rcyyin gt;exxt
+    .wrapper
+      .container
+        p 💧 APCry is a cry-typing generator and open API for creating maximum tears on the fly
 
+        .row.align-items-center.cat-contain
+          .col-auto
+            img.sad-cat(src=require('./assets/sadcat.png'), alt="im ..just nrot crying youc're  cryinng")
 
-      .row.align-items-center.cat-contain
-        .col-auto
-          img.sad-cat(src=require('./assets/sadcat.png'), alt="im ..just nrot crying youc're  cryinng")
+          .col
+            p Type in here
+            label.speech.left
+              textarea.tears-input(name="tears" placeholder="give me your tears coward")
 
-        .col
-          label.speech.left
-            textarea.tears-input(name="tears" placeholder="give me your tears coward")
+        .row.align-items-center.cat-contain
+          .col
+            p Tears come out here
+            div.speech.right ,give m..e yyourr teaars coward
 
-      .row.align-items-center.cat-contain
-        .col
-          div.speech.right ,give m..e yyourr teaars coward
-
-        .col-auto
-          img.sad-cat(src=require('./assets/crycat.png'), alt="im ..just nrot crying youc're  cryinng")
+          .col-auto
+            img.sad-cat(src=require('./assets/crycat.png'), alt="im ..just nrot crying youc're  cryinng")
