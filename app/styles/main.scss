@@ -9,9 +9,30 @@ body,
 html {
   background-color: $dark;
   color: $light;
+  font-size: 18px;
+  font-weight: 300;
 }
 
-.wrapper {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+h2 {
+  font-size: 1.8rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+
+#wrapper {
   position: relative;
   overflow: hidden;
   padding-top: 60px;
@@ -86,7 +107,37 @@ html {
 }
 
 hr {
-  margin-top: 45px;
-  margin-bottom: 45px;
+  margin-top: 100px;
+  margin-bottom: 100px;
   border-width: 1px;
+}
+
+img.emoji {
+  height: 1em;
+  width: 1em;
+  margin: 0 0.05em 0 0.1em;
+  vertical-align: -0.1em;
+}
+
+.card-list {
+  padding-top: 100px;
+  padding-bottom: 70px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  background-color: rgba(white, 0.05);
+}
+
+.info-card {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.info-card-emoji {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+.info-card-label {
+  font-weight: 400;
+  font-size: 1.25rem;
 }

@@ -16,12 +16,42 @@ html(lang="en-GB")
     script(src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous")
 
   body
-    .wrapper
-      .container
-        include components/intro.pug
-        include components/generator.pug
+    #wrapper
+      section
+        .container
+          include components/intro.pug
+          include components/generator.pug
 
-        hr
-        
-        include components/api/requests.pug
-        include components/api/responses.pug
+          hr
+
+        section
+          .container
+            h1 Crytype API
+            
+            p Use our free, open API and let users crytype-ify text in your app.
+            p <em>Why, you ask?</em> Why the hell not. Make a Discord bot or something. Pop off.
+
+          .card-list
+            .container
+              .row
+                .col-4
+                  .info-card
+                    .info-card-emoji 💨
+                    p.info-card-label Simple HTTP interface
+                    span give us your text and receive some tears
+
+                .col-4
+                  .info-card
+                    .info-card-emoji 🔑
+                    p.info-card-label No API key required
+                    span get started straight away
+
+                .col-4
+                  .info-card
+                    .info-card-emoji 💸
+                    p.info-card-label Free to use
+                    span just a simple thanks in your readme/source would be chill
+
+          .container
+            include components/api/requests.pug
+            include components/api/responses.pug
