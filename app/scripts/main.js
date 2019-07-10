@@ -7,3 +7,8 @@ import '../styles/main.scss';
 hljs.registerLanguage('json', json);
 hljs.registerLanguage('javascript', javascript);
 hljs.initHighlightingOnLoad();
+
+twemoji.parse(document.getElementById('wrapper'), {
+  folder: 'svg',
+  ext: '.svg',
+});
