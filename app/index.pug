@@ -19,38 +19,39 @@ html(lang="en-GB")
       section
         .container
           include components/intro.pug
+
+      section
+        .container
           include components/generator.pug
 
-          hr
+      section
+        .container
+          h1#api Crytype API
+          
+          p Use our free, open API and let users crytype-ify text in your app.
+          p <em>"But why?"</em>, you ask? Why the hell not. Make a Discord bot or something. Pop off.
 
-        section
+        .card-list
           .container
-            h1 Crytype API
-            
-            p Use our free, open API and let users crytype-ify text in your app.
-            p <em>Why, you ask?</em> Why the hell not. Make a Discord bot or something. Pop off.
+            .row
+              .col-4
+                .info-card
+                  .info-card-emoji 💨
+                  p.info-card-label Simple HTTP interface
+                  span give us your text and receive some tears
 
-          .card-list
-            .container
-              .row
-                .col-4
-                  .info-card
-                    .info-card-emoji 💨
-                    p.info-card-label Simple HTTP interface
-                    span give us your text and receive some tears
+              .col-4
+                .info-card
+                  .info-card-emoji 🔑
+                  p.info-card-label No API key required
+                  span get started straight away
 
-                .col-4
-                  .info-card
-                    .info-card-emoji 🔑
-                    p.info-card-label No API key required
-                    span get started straight away
+              .col-4
+                .info-card
+                  .info-card-emoji 💸
+                  p.info-card-label Free to use
+                  span just a simple thanks in your readme/source would be chill
 
-                .col-4
-                  .info-card
-                    .info-card-emoji 💸
-                    p.info-card-label Free to use
-                    span just a simple thanks in your readme/source would be chill
-
-          .container
-            include components/api/requests.pug
-            include components/api/responses.pug
+        .container
+          include components/api/requests.pug
+          include components/api/responses.pug
