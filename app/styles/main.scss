@@ -68,6 +68,10 @@ a:visited {
       transform: scale(1, 1);
     }
   }
+
+  &.no-hover:after {
+    display: none;
+  }
 }
 
 section {
