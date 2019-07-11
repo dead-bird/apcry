@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "",
     "api:dev": "nodemon --exec babel-node api/index.js",
-    "api:serve": "npm run build && node dist/index.js",
+    "api:serve": "npm run api:build && pm2 start dist/index.js --name apcry",
     "api:build": "babel api -d dist",
     "app:dev": "webpack-dev-server --mode=development",
     "app:build": "webpack --mode=production"
@@ -16,7 +16,17 @@
     "url": "git+https://github.com/dead-bird/apcry.git"
   },
   "keywords": [
-    "crytext"
+    "crytext",
+    "crytype",
+    "crytyping",
+    "crytext",
+    "crytyper",
+    "cry-type",
+    "cry-typing",
+    "cry-text",
+    "cry-typer",
+    "generator",
+    "API"
   ],
   "readmeFilename": "README.md",
   "license": "MIT License",
