@@ -11,6 +11,9 @@ html {
   color: $light;
   font-size: 18px;
   font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.5;
+  letter-spacing: 0.01rem;
 }
 
 h1,
@@ -53,8 +56,6 @@ section {
 #wrapper {
   position: relative;
   overflow: hidden;
-  // padding-top: 60px;
-  // padding-bottom: 60px;
 }
 
 .container {
