@@ -2,3 +2,9 @@
   base    = ""
   publish = "app/dist"
   command = "npm run app:build"
+
+[[redirects]]
+  from = "https://apcry.deadbird.dev/api/*"
+  to = "https://api.apcry.deadbird.dev/:splat"
+  status = 301
+  force = true
