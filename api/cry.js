@@ -12,11 +12,8 @@ function cry(text) {
     .replace(/(\w+)(ing)/gm, '$1in')
     .split('')
     .map((char, index, array) => {
-      // 60% chance apos -> semi
-      if (char === "'" && random(1, 10) > 4) {
-        // 50% chance to send 2
-        char = clone(';', 1, 2);
-      }
+      // Apostrophe -> semi
+      if (char === "'" && chance(40)) return clone(';', 1, 2);
 
       // Basic check to skip unfiendly characters
       if (!/[a-z0-9]/.test(char)) return char;
