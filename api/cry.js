@@ -24,7 +24,6 @@ function cry(text) {
       if (/[a-z0-9]/.test(char)) {
         // Clone amount based on punc type from tumblr
         if (endPunc(char)) char = clone(char, 1, 4); // yeet imo
-
         if (excPunc(char)) char = clone(char, 3, 7); // yeet imo
 
         // This uses else ifs to avoid multi mutation on 1 char
@@ -33,13 +32,12 @@ function cry(text) {
 
         // %chances taken from B, may be a better way to do them
 
-        // 4% letter swap
         if (random(0, 100) > 95) {
-          // Swap with letter ahead // B's can swap with behind
-          if (array[index + 1]) {
-            let swap = char;
-            char = array[index + 1];
-            array[index + 1] = swap;
+          const next = index + 1;
+
+          // Swap with letter ahead - see `destructuring assignment`
+          if (array[next]) {
+            [array[index], array[next]] = [array[next], array[index]];
           }
         }
         // 1% add random char
