@@ -21,10 +21,6 @@ function cry(text) {
       // Basic check to skip unfiendly chars
       if (!/[a-z0-9]/.test(char)) return char;
 
-      // Clone amount based on punc type from tumblr
-      // if (endPunc(char)) char = clone(char, 1, 4); // yeet imo
-      // if (excPunc(char)) char = clone(char, 3, 7); // yeet imo
-
       // Swap with letter ahead - see `destructuring assignment`
       if (chance(95)) {
         const next = index + 1;
@@ -38,9 +34,6 @@ function cry(text) {
 
       // 1% add random char
       if (chance(99)) return (char += randChar(char));
-
-      // Swap with random vowel
-      // if (chance(99)) return vowelWarp(char);
 
       // 5% add up to 3 random punctuations
       if (chance(94)) {
@@ -65,15 +58,6 @@ function cry(text) {
 /*********************
  * Utility Functions *
  *********************/
-
-// ??
-const endPunc = char => ',.?!'.indexOf(char) >= 0;
-
-// ??
-const excPunc = char => '?!'.indexOf(char) >= 0;
-
-// Yeet? letter swap basically? idk - unused atm
-const vowelWarp = char => char + 'aeiou'[random(0, 4)];
 
 // Get random int
 const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
