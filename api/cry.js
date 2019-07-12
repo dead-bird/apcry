@@ -20,68 +20,65 @@ function cry(text) {
       }
 
       // Basic check to skip unfiendly chars
-      // To prevent mangled / weird output
-      if (/[a-z0-9]/.test(char)) {
-        // Clone amount based on punc type from tumblr
-        if (endPunc(char)) char = clone(char, 1, 4); // yeet imo
-        if (excPunc(char)) char = clone(char, 3, 7); // yeet imo
+      if (!/[a-z0-9]/.test(char)) return char;
 
-        // This uses else ifs to avoid multi mutation on 1 char
-        // B can have multi mutations but will skip x chars ahead after doing so?
-        // Confusing, maybe will make more sense explaining in person
+      // Clone amount based on punc type from tumblr
+      if (endPunc(char)) char = clone(char, 1, 4); // yeet imo
+      if (excPunc(char)) char = clone(char, 3, 7); // yeet imo
 
-        // %chances taken from B, may be a better way to do them
+      // This uses else ifs to avoid multi mutation on 1 char
+      // B can have multi mutations but will skip x chars ahead after doing so?
+      // Confusing, maybe will make more sense explaining in person
 
-        if (random(0, 100) > 95) {
-          const next = index + 1;
+      // %chances taken from B, may be a better way to do them
 
-          // Swap with letter ahead - see `destructuring assignment`
-          if (array[next]) {
-            [array[index], array[next]] = [array[next], array[index]];
-          }
+      if (random(0, 100) > 95) {
+        const next = index + 1;
+
+        // Swap with letter ahead - see `destructuring assignment`
+        if (array[next]) {
+          [array[index], array[next]] = [array[next], array[index]];
         }
-        // 1% add random char
-        else if (random(0, 100) > 99) {
-          // B rngs this to 1-2 chars
-          char += randChar(char);
-        }
-        // Swap with random vowel? this is in tumblr vers
-        // else if (x) {
-        // char = vowelWarp(char)
-        // }
-        // 5% add rand punctuation
-        else if (random(0, 100) > 94) {
-          // add up to 3 random punctuations
-          for (let i = 0; i < random(1, 3); i++) {
-            switch (random(1, 5)) {
-              case 1:
-              // ff
-              case 2:
-                char += ','; // 40% chance for comma instead of the 20% for other punc
-                break;
-              case 3:
-                char += ' ';
-                break;
-              case 4:
-                char += '.';
-                break;
-              case 5:
-                char += ';';
-                break;
-            }
-          }
-        }
-        // 10% stutter
-        else if (random(0, 100) > 89) {
-          // Clone char once
-          // Think B does up to 2 additional chars
-          char = clone(char);
-        }
-        // 1% delete char
-        else if (random(0, 100) > 99) {
-          char = '';
-        }
+
+        return char;
       }
+
+      // 1% add random char
+      if (random(0, 100) > 99) return (char += randChar(char));
+
+      // Swap with random vowel? this is in tumblr vers
+      // if (x) return vowelWarp(char);
+
+      // 5% add rand punctuation
+      if (random(0, 100) > 94) {
+        // add up to 3 random punctuations
+        for (let i = 0; i < random(1, 3); i++) {
+          switch (random(1, 5)) {
+            case 1:
+            // ff
+            case 2:
+              char += ','; // 40% chance for comma instead of the 20% for other punc
+              break;
+            case 3:
+              char += ' ';
+              break;
+            case 4:
+              char += '.';
+              break;
+            case 5:
+              char += ';';
+              break;
+          }
+        }
+
+        return char;
+      }
+
+      // Clone char once - think B does up to 2 additional chars
+      if (random(0, 100) > 89) return clone(char);
+
+      // 1% delete char
+      if (random(0, 100) > 99) return '';
 
       return char;
     })
