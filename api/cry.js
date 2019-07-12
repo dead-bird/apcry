@@ -45,7 +45,7 @@ function cry(text) {
       // 5% add up to 3 random punctuations
       if (random(0, 100) > 94) {
         for (let i = 0; i < random(1, 3); i++) {
-          char += ',, .;'[random(0, 5)];
+          char += ',, .;'[random(0, 4)];
         }
 
         return char;
