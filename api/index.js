@@ -14,6 +14,8 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.set('trust proxy', 1);
+
 app.use(
   limit({
     message: { status: 429, message: 'alright there cowboy, time to stop 🤠' },
