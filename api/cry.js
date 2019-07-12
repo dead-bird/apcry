@@ -18,10 +18,10 @@ function cry(text) {
         char = clone(';', 1, 2);
       }
 
-      // Basic check to skip unfiendly chars
+      // Basic check to skip unfiendly characters
       if (!/[a-z0-9]/.test(char)) return char;
 
-      // Swap with letter ahead - see `destructuring assignment`
+      // Swap with character ahead - see `destructuring assignment`
       if (chance(95)) {
         const next = index + 1;
 
@@ -32,10 +32,10 @@ function cry(text) {
         return char;
       }
 
-      // 1% add random char
+      // Add random character
       if (chance(99)) return (char += randChar(char));
 
-      // 5% add up to 3 random punctuations
+      // Add up to 3 random punctuations
       if (chance(94)) {
         for (let i = 0; i < random(1, 3); i++) {
           char += ',, .;'[random(0, 4)];
@@ -44,10 +44,10 @@ function cry(text) {
         return char;
       }
 
-      // Clone character once
+      // Clone character
       if (chance(89)) return clone(char);
 
-      // 1% delete character
+      // Delete character
       if (chance(99)) return '';
 
       return char;
