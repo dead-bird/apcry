@@ -6,7 +6,6 @@ export default text => {
   });
 };
 
-// Loop over letters and mutate
 function cry(text) {
   return text
     .toLowerCase()
@@ -23,19 +22,13 @@ function cry(text) {
       if (!/[a-z0-9]/.test(char)) return char;
 
       // Clone amount based on punc type from tumblr
-      if (endPunc(char)) char = clone(char, 1, 4); // yeet imo
-      if (excPunc(char)) char = clone(char, 3, 7); // yeet imo
+      // if (endPunc(char)) char = clone(char, 1, 4); // yeet imo
+      // if (excPunc(char)) char = clone(char, 3, 7); // yeet imo
 
-      // This uses else ifs to avoid multi mutation on 1 char
-      // B can have multi mutations but will skip x chars ahead after doing so?
-      // Confusing, maybe will make more sense explaining in person
-
-      // %chances taken from B, may be a better way to do them
-
+      // Swap with letter ahead - see `destructuring assignment`
       if (random(0, 100) > 95) {
         const next = index + 1;
 
-        // Swap with letter ahead - see `destructuring assignment`
         if (array[next]) {
           [array[index], array[next]] = [array[next], array[index]];
         }
