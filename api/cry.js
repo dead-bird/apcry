@@ -39,7 +39,7 @@ function cry(text) {
       // 1% add random char
       if (chance(99)) return (char += randChar(char));
 
-      // Swap with random vowel? this is in tumblr vers
+      // Swap with random vowel
       // if (chance(99)) return vowelWarp(char);
 
       // 5% add up to 3 random punctuations
@@ -51,10 +51,10 @@ function cry(text) {
         return char;
       }
 
-      // Clone char once - think B does up to 2 additional chars
+      // Clone character once
       if (chance(89)) return clone(char);
 
-      // 1% delete char
+      // 1% delete character
       if (chance(99)) return '';
 
       return char;
@@ -72,14 +72,14 @@ const endPunc = char => ',.?!'.indexOf(char) >= 0;
 // ??
 const excPunc = char => '?!'.indexOf(char) >= 0;
 
+// Yeet? letter swap basically? idk - unused atm
+const vowelWarp = char => char + 'aeiou'[random(0, 4)];
+
 // Get random int
 const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 // Clones letter once if no min or max passed
 const clone = (char, min = 2, max = 2) => char.repeat(random(min, max));
-
-// Yeet? letter swap basically? idk - unused atm
-const vowelWarp = char => char + 'aeiou'[random(0, 4)];
 
 // Generic probability check
 const chance = value => random(0, 100) > value;
