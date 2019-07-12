@@ -26,7 +26,7 @@ function cry(text) {
       // if (excPunc(char)) char = clone(char, 3, 7); // yeet imo
 
       // Swap with letter ahead - see `destructuring assignment`
-      if (random(0, 100) > 95) {
+      if (chance(95)) {
         const next = index + 1;
 
         if (array[next]) {
@@ -37,13 +37,13 @@ function cry(text) {
       }
 
       // 1% add random char
-      if (random(0, 100) > 99) return (char += randChar(char));
+      if (chance(99)) return (char += randChar(char));
 
       // Swap with random vowel? this is in tumblr vers
-      // if (x) return vowelWarp(char);
+      // if (chance(99)) return vowelWarp(char);
 
       // 5% add up to 3 random punctuations
-      if (random(0, 100) > 94) {
+      if (chance(94)) {
         for (let i = 0; i < random(1, 3); i++) {
           char += ',, .;'[random(0, 4)];
         }
@@ -52,10 +52,10 @@ function cry(text) {
       }
 
       // Clone char once - think B does up to 2 additional chars
-      if (random(0, 100) > 89) return clone(char);
+      if (chance(89)) return clone(char);
 
       // 1% delete char
-      if (random(0, 100) > 99) return '';
+      if (chance(99)) return '';
 
       return char;
     })
@@ -80,6 +80,9 @@ const clone = (char, min = 2, max = 2) => char.repeat(random(min, max));
 
 // Yeet? letter swap basically? idk - unused atm
 const vowelWarp = char => char + 'aeiou'[random(0, 4)];
+
+// Generic probability check
+const chance = value => random(0, 100) > value;
 
 // Return 1 random char
 function randChar(char) {
