@@ -49,26 +49,10 @@ function cry(text) {
       // Swap with random vowel? this is in tumblr vers
       // if (x) return vowelWarp(char);
 
-      // 5% add rand punctuation
+      // 5% add up to 3 random punctuations
       if (random(0, 100) > 94) {
-        // add up to 3 random punctuations
         for (let i = 0; i < random(1, 3); i++) {
-          switch (random(1, 5)) {
-            case 1:
-            // ff
-            case 2:
-              char += ','; // 40% chance for comma instead of the 20% for other punc
-              break;
-            case 3:
-              char += ' ';
-              break;
-            case 4:
-              char += '.';
-              break;
-            case 5:
-              char += ';';
-              break;
-          }
+          char += ',, .;'[random(0, 5)];
         }
 
         return char;
