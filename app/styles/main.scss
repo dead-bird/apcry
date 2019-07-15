@@ -99,35 +99,41 @@ section {
 .speech {
   display: block;
   padding: 15px 20px;
-  min-height: 125px;
+  min-height: 200px;
   position: relative;
   background: $light;
   border-radius: 0.4em;
   color: $dark;
   margin: 0;
 
-  &:after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 0;
-    height: 0;
-    border: 29px solid transparent;
-    margin-top: -29px;
+  &.right {
+    font-style: italic;
+    color: $light;
+    background-color: $primary;
   }
 
-  &.left:after {
-    left: 0;
-    border-right-color: $light;
-    border-left: 0;
-    margin-left: -29px;
-  }
-  &.right:after {
-    right: 0;
-    border-left-color: $light;
-    border-right: 0;
-    margin-right: -29px;
-  }
+  // &:after {
+  //   content: '';
+  //   position: absolute;
+  //   top: 50%;
+  //   width: 0;
+  //   height: 0;
+  //   border: 29px solid transparent;
+  //   margin-top: -29px;
+  // }
+
+  // &.left:after {
+  //   left: 0;
+  //   border-right-color: $light;
+  //   border-left: 0;
+  //   margin-left: -29px;
+  // }
+  // &.right:after {
+  //   right: 0;
+  //   border-left-color: $light;
+  //   border-right: 0;
+  //   margin-right: -29px;
+  // }
 }
 
 .tears-input {
@@ -135,7 +141,7 @@ section {
   width: 100%;
   border: none;
   background-color: transparent;
-  min-height: 85px;
+  min-height: 160px;
   outline: none;
 
   &::placeholder {
@@ -221,4 +227,12 @@ img.emoji {
 footer {
   text-align: center;
   padding-bottom: 60px;
+}
+
+label {
+  margin-bottom: 0;
+}
+
+.text-right {
+  text-align: right;
 }
