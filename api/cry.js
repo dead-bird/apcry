@@ -18,15 +18,14 @@ function cry(text) {
       // Basic check to skip unfiendly characters
       if (!/[a-z0-9]/.test(char)) return char;
 
-      // Swap with character ahead - see `destructuring assignment`
+      // Swap with character ahead
       if (chance(95)) {
-        const next = index + 1;
+        const i = index + 1;
+        let buffer = char;
 
-        if (array[next]) {
-          [array[index], array[next]] = [array[next], array[index]];
-        }
+        if (array[i]) (buffer = array[i]), (array[i] = char);
 
-        return char;
+        return buffer;
       }
 
       // Add random character
