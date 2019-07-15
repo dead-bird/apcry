@@ -105,6 +105,7 @@ section {
   border-radius: 0.4em;
   color: $dark;
   margin: 0;
+  margin-bottom: 45px;
 
   &.right {
     font-style: italic;
@@ -233,6 +234,6 @@ label {
   margin-bottom: 0;
 }
 
-.text-right {
-  text-align: right;
-}
+// .text-right {
+//   text-align: right;
+// }
