@@ -1,4 +1,5 @@
 import limit from 'express-rate-limit';
+import handle from './handler';
 import express from 'express';
 import cry from './cry';
 
@@ -30,7 +31,11 @@ app.get('/*', (req, res) => {
   const input = decodeURI(req.originalUrl.substr(1)).trim();
 
   cry(input)
-    .then(tears => res.json({ status: 200, input, tears }))
+    .then(tears => {
+      handle({ input, tears });
+
+      res.json({ status: 200, input, tears });
+    })
     .catch(e => res.status(e.status || 400).send(e));
 });
 
