@@ -7,7 +7,7 @@ const client = new Twitter(process.env);
 
 function tweet(status) {
   client
-    .post('xxx', { status })
+    .post('statuses/update', { status })
     .then(tweet => {
       console.log(`Tweet sent @ ${tweet.created_at}: ${status}`);
     })
