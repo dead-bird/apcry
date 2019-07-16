@@ -52,11 +52,13 @@
     "@babel/runtime": "^7.4.5",
     "bootstrap": "^4.3.1",
     "css-loader": "^2.1.1",
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "express-rate-limit": "^5.0.0",
     "highlight.js": "^9.15.8",
     "style-loader": "^0.23.1",
     "twemoji": "^12.1.2",
+    "twitter": "^1.7.1",
     "webmanifest-loader": "^0.3.0"
   },
   "engines": {
