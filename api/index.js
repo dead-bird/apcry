@@ -1,6 +1,6 @@
 import limit from 'express-rate-limit';
-import handle from './handler';
 import express from 'express';
+import queue from './queue';
 import cry from './cry';
 import log from './log';
 
@@ -33,7 +33,7 @@ app.get('/*', (req, res) => {
 
   cry(input)
     .then(tears => {
-      handle({ input, tears });
+      queue.add({ input, tears });
 
       res.json({ status: 200, input, tears });
     })
@@ -41,3 +41,5 @@ app.get('/*', (req, res) => {
 });
 
 app.listen(3002, () => log.info(`Listening on port 3002`));
+
+queue.run();
