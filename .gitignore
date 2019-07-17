@@ -63,3 +63,5 @@ typings/
 src/data
 
 dist
+
+.node-persist
