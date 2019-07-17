@@ -2,6 +2,7 @@ import limit from 'express-rate-limit';
 import handle from './handler';
 import express from 'express';
 import cry from './cry';
+import log from './log';
 
 let app = express();
 
@@ -39,4 +40,4 @@ app.get('/*', (req, res) => {
     .catch(e => res.status(e.status || 400).send(e));
 });
 
-app.listen(3002, () => console.log(`Listening on port 3002`));
+app.listen(3002, () => log.info(`Listening on port 3002`));
