@@ -28,6 +28,15 @@ app.use(
 
 app.get('/favicon.ico', () => false);
 
+// List items that are in the Tweet queue - only used internally
+app.get('/queue', (req, res) => {
+  queue
+    .list()
+    .then(items => res.json({ status: 200, items }))
+    .catch(e => log.error(e));
+});
+
+// Make some tears
 app.get('/*', (req, res) => {
   const input = decodeURI(req.originalUrl.substr(1)).trim();
 

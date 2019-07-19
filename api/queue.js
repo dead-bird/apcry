@@ -18,23 +18,34 @@ const add = async item => {
 
 const run = async () => {
   setInterval(() => {
-    storage.values().then(store => {
-      const items = store.sort((a, b) => new Date(a.date) - new Date(b.date));
+    list()
+      .then(items => {
+        if (!items.length) return log.warn('No Tweets in queue - aborting');
 
-      if (!items.length) return log.warn('No Tweets in queue - aborting');
+        const item = items[0];
 
-      const item = items[0];
-
-      twitter
-        .sendTweet(item)
-        .then(() => {
-          storage.removeItem(slugify(item.input));
-        })
-        .catch(e => log.error(`error sending Tweet: ${e[0].message}`));
-    });
+        twitter
+          .sendTweet(item)
+          .then(() => {
+            storage.removeItem(slugify(item.input));
+          })
+          .catch(e => log.error(`error sending Tweet: ${e[0].message}`));
+      })
+      .catch(e => log.error(e));
   }, interval);
+};
+
+const list = () => {
+  return new Promise((resolve, reject) => {
+    storage
+      .values()
+      .then(items => {
+        resolve(items.sort((a, b) => new Date(a.date) - new Date(b.date)));
+      })
+      .catch(e => reject(e));
+  });
 };
 
 const slugify = val => val.replace(/\s+/g, '-').toLowerCase();
 
-export default { add, run };
+export default { add, run, list };
