@@ -40,6 +40,13 @@ app.get('/queue', (req, res) => {
 app.get('/*', (req, res) => {
   const input = decodeURI(req.originalUrl.substr(1)).trim();
 
+  if (input.length > 2000) {
+    return res.json({
+      status: 413,
+      message: "oh noes, that's too much string my guy (╥_╥)",
+    });
+  }
+
   cry(input)
     .then(tears => {
       queue.add({ input, tears });
