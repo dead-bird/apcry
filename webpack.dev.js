@@ -25,7 +25,19 @@ const config = {
     rules: [
       {
         test: /\.(scss|css)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+      },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
+          },
+        ],
       },
       {
         test: /\.pug$/,
@@ -45,10 +57,10 @@ const config = {
 };
 
 module.exports = (env, argv) => {
-  if (argv.mode === 'development') {
-  }
-  if (argv.mode === 'production') {
-  }
+  // if (argv.mode === 'development') {
+  // }
+  // if (argv.mode === 'production') {
+  // }
 
   return config;
 };
