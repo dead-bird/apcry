@@ -14,7 +14,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'app/dist'),
     filename: '[name].bundle.js',
-    publicPath: '/assets/',
+    publicPath: '/',
   },
 
   devServer: {
