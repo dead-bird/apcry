@@ -14,7 +14,7 @@ const add = async item => {
   }
 
   // twitter char limit
-  if (item.input.length > 280) {
+  if (item.tears.length > 280) {
     return log.warn('this input ting is way too massive and dat bruv');
   }
 
