@@ -13,6 +13,11 @@ const add = async item => {
     return log.warn("this input is profane and I won't have any of it!");
   }
 
+  // twitter char limit
+  if (item.input.length > 280) {
+    return log.warn('this input ting is way too massive and dat bruv');
+  }
+
   await storage.setItem(slugify(item.input), { date: new Date(), ...item });
 };
 
