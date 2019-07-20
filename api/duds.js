@@ -3,7 +3,9 @@
 module.exports = [
   '/Panel',
   '/chmod 777',
+  '/webdav',
   /.*\.php/,
+  /\?\_\=/,
   /.*\.html/,
   /.*\.txt/,
   /.*\.ico/,
