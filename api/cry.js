@@ -29,7 +29,7 @@ function cry(text) {
       }
 
       // Add random character
-      if (chance(99)) return (char += randChar(char));
+      if (chance(99)) return (char += randChar());
 
       // Add up to 3 random punctuations
       if (chance(94)) {
@@ -65,7 +65,7 @@ const clone = (char, min = 2, max = 2) => char.repeat(random(min, max));
 const chance = value => random(0, 100) > value;
 
 // Return 1 random char
-function randChar(char) {
+function randChar() {
   const chars = "abcdefghijklmnopqrstuvwxyz,./'[]\\`";
-  return char + chars.charAt(Math.floor(Math.random() * chars.length));
+  return chars.charAt(Math.floor(Math.random() * chars.length));
 }
