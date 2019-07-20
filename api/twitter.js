@@ -6,8 +6,10 @@ dotenv.config();
 
 const client = new Twitter(process.env);
 
+// Twitter character limit
 const limit = 140;
 
+// Send Tweet from cry input
 const sendTweet = item => {
   const status = item.tears;
 
