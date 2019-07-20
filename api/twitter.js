@@ -6,6 +6,8 @@ dotenv.config();
 
 const client = new Twitter(process.env);
 
+const limit = 140;
+
 const sendTweet = item => {
   const status = item.tears;
 
@@ -21,4 +23,4 @@ const sendTweet = item => {
   });
 };
 
-export default { sendTweet };
+export default { sendTweet, limit };

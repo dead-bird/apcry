@@ -13,9 +13,9 @@ const add = async item => {
     return log.warn("this input is profane and I won't have any of it!");
   }
 
-  // twitter char limit
-  if (item.tears.length > 280) {
-    return log.warn('this input ting is way too massive and dat bruv');
+  // Twitter char limit
+  if (item.tears.length > twitter.limit) {
+    item.tears = item.tears.substring(0, twitter.limit - 3) + '...';
   }
 
   await storage.setItem(slugify(item.input), { date: new Date(), ...item });
