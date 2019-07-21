@@ -4,9 +4,10 @@ module.exports = [
   '/Panel',
   '/chmod 777',
   '/webdav',
+  /.*\.js/,
   /.*\.php/,
-  /\?\_\=/,
   /.*\.html/,
   /.*\.txt/,
   /.*\.ico/,
+  /.*\.xml/,
 ];
