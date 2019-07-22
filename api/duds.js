@@ -3,7 +3,8 @@
 module.exports = [
   '/Panel',
   '/chmod 777',
-  '/webdav',
+  '/webdav*',
+  '/manager*',
   /.*\.js/,
   /.*\.php/,
   /.*\.html/,
