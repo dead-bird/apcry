@@ -5,6 +5,6 @@
 
 # [[redirects]]
 #   from = "https://apcry.deadbird.dev/api/*"
-#   to = "https://api.apcry.deadbird.dev/:splat"
+#   to = "https://api.apcry.deadbird.dev/cry/:splat"
 #   status = 200
 #   force = true

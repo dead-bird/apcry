@@ -1,7 +1,7 @@
 import limit from 'express-rate-limit';
 import express from 'express';
 import queue from './queue';
-import duds from './duds';
+// import duds from './duds';
 import cry from './cry';
 import log from './log';
 
@@ -39,9 +39,9 @@ app.use(
 );
 
 // Dead routes
-app.use(duds, (req, res) => {
-  res.json({ status: 404, message: 'Nothing to see here 👀' });
-});
+// app.use(duds, (req, res) => {
+//   res.json({ status: 404, message: 'Nothing to see here 👀' });
+// });
 
 // List items that are in the Tweet queue - only used internally
 app.get('/queue', (req, res) => {
@@ -52,8 +52,8 @@ app.get('/queue', (req, res) => {
 });
 
 // Make some tears
-app.get('/*', (req, res) => {
-  const input = decodeURI(req.originalUrl.substr(1)).trim();
+app.get('/cry/*', (req, res) => {
+  const input = decodeURI(req.originalUrl.substr(5)).trim();
 
   if (input.length > 2000) {
     return res.json({
