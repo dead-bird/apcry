@@ -72,7 +72,7 @@ app.get('/cry/*', (req, res) => {
 });
 
 // Listen for connections
-app.listen(3002, () => log.info(`Listening on port 3002`));
+app.listen(3002, () => log.info(`peep me at http://localhost:3002/`));
 
 // Run the Tweet queue
 queue.run();
