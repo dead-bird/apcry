@@ -1,18 +1,18 @@
 import storage from 'node-persist';
 import twitter from './twitter';
-import { words } from './duds';
-import Filter from 'bad-words';
+// import { words } from './duds';
+// import Filter from 'bad-words';
 import log from './log';
 
 const interval = 60 * 60 * 1000; // 1hr
-const filter = new Filter({ list: words });
+// const filter = new Filter({ list: words });
 
 storage.init();
 
 const add = async item => {
-  // Run through profanity filter in `duds` and check it's not @ing a user
-  if (filter.isProfane(item.input) || /\@\S+/gm.test(item.input)) {
-    return log.warn('profane input - aborting');
+  // ~~Run through profanity filter in `duds` and~~ check it's not @ing a user
+  if (/\@\S+/gm.test(item.input)) {
+    return log.warn("don't @ someone coward: ", item.input);
   }
 
   // Twitter char limit
