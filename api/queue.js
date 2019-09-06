@@ -12,7 +12,7 @@ storage.init();
 const add = async item => {
   // ~~Run through profanity filter in `duds` and~~ check it's not @ing a user
   if (/\@\S+/gm.test(item.input)) {
-    return log.warn("don't @ someone coward: ", item.input);
+    return log.warn(`don't @ someone coward: ${item.input}`);
   }
 
   // Twitter char limit
