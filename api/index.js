@@ -1,4 +1,5 @@
 import limit from 'express-rate-limit';
+import bodyParser from 'body-parser';
 import express from 'express';
 import queue from './queue';
 import cry from './cry';
@@ -6,22 +7,21 @@ import log from './log';
 
 let app = express();
 
+app.use(bodyParser.json());
+
 // Set Express headers
 app.use((req, res, next) => {
-  // Allow requests from any origin
-  res.header('Access-Control-Allow-Origin', '*');
+	// Allow requests from any origin
+	res.header('Access-Control-Allow-Origin', '*');
 
-  // Set which HTTP headers can be used the request
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Authorization, Accept'
-  );
+	// Set which HTTP headers can be used the request
+	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Authorization, Accept');
 
-  // Only allow GET requests
-  res.header('Access-Control-Allow-Methods', 'GET');
+	// Only allow GET/POST requests
+	res.header('Access-Control-Allow-Methods', 'GET, OPTIONS, POST');
 
-  // Onwards!
-  next();
+	// Onwards!
+	next();
 });
 
 // We're proxying apache to localhost so we wanna grab the client’s IP
@@ -46,8 +46,8 @@ app.get('/queue', (req, res) => {
 });
 
 // Make some tears
-app.get('/cry/*', (req, res) => {
-  const input = decodeURI(req.originalUrl.substr(5)).trim();
+app.post('/cry', ({ body }, res) => {
+	const { input } = body;
 
   if (input.length > 2000) {
     return res.json({
