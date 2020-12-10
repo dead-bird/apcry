@@ -1,7 +1,6 @@
 import limit from 'express-rate-limit';
 import express from 'express';
 import queue from './queue';
-// import duds from './duds';
 import cry from './cry';
 import log from './log';
 
@@ -37,11 +36,6 @@ app.use(
     max: 100, // limit each IP to 100 requests per windowMs
   })
 );
-
-// Dead routes
-// app.use(duds, (req, res) => {
-//   res.json({ status: 404, message: 'Nothing to see here 👀' });
-// });
 
 // List items that are in the Tweet queue - only used internally
 app.get('/queue', (req, res) => {
