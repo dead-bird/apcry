@@ -8,7 +8,6 @@
   pre
     code.
       {
-        "status": 200,
         "input": "I wish there was an API that could integrate crytyping into my Discord Bot",
         "tears": "i w,,ihs ttherre w,was an   api thhat cuold inntegrate crytyping int  o my d iscord bot"
       }
@@ -18,27 +17,18 @@
   p Invalid parameters - you probably didn't send any text. Nice one.
   pre
     code.
-      {
-        "status": 400,
-        "message": "No text supplied"
-      }
+      No text supplied
 
   h3
     span Code 413
   p Yikes dude, that's a lot of text you want converted. A bit too much...
   pre
     code.
-      {
-        "status": 413,
-        "message": "oh noes, that's too much string my guy (╥_╥)"
-      }
+      oh noes, that's too much string my guy (╥_╥)
 
   h3
     span Code 429
   p Whoa, just take it easy man - you've exceeded your rate limit.
   pre
     code.
-      {
-        "status": 429,
-        "message": "alright there cowboy, time to stop 🤠"
-      }
+      alright there cowboy, time to stop 🤠
