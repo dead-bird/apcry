@@ -65,7 +65,7 @@ app.post('/cry', ({ body }, res) => {
 });
 
 // Listen for connections
-app.listen(3002, () => log.info(`peep me at http://localhost:3002/`));
+app.listen(3002, () => log.info(`peep me at http://localhost:3003/`));
 
 // Run the Tweet queue
 queue.run();
