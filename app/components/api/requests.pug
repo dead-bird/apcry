@@ -2,11 +2,14 @@
   h2
     span API Requests
 
-  p Make <code>GET</code> requests to <code>`https://api.apcry.deadbird.dev/cry/{text to be crytyped}`</code>
+  p Make <code>POST</code> requests to <code>`https://api.apcry.ratpack.dev/cry`</code>
 
   pre
     code.double.
-      fetch('https://api.apcry.deadbird.dev/cry/oof owie my head').then(function(res) {
-        console.log(res.tears);
+      const apcry = 'https://api.apcry.ratpack.dev/cry'
+      const input = 'oof owie my head'
+
+      axios.post(apcry, { input }).then(({ data }) => {
+        console.log(data.tears);
         // oof,, owfi.e my heeaad
       });

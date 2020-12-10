@@ -1,11 +1,13 @@
 import limit from 'express-rate-limit';
+import bodyParser from 'body-parser';
 import express from 'express';
 import queue from './queue';
-// import duds from './duds';
 import cry from './cry';
 import log from './log';
 
 let app = express();
+
+app.use(bodyParser.json());
 
 // Set Express headers
 app.use((req, res, next) => {
@@ -18,8 +20,8 @@ app.use((req, res, next) => {
     'Origin, X-Requested-With, Content-Type, Authorization, Accept'
   );
 
-  // Only allow GET requests
-  res.header('Access-Control-Allow-Methods', 'GET');
+  // Only allow GET/POST requests
+  res.header('Access-Control-Allow-Methods', 'GET, OPTIONS, POST');
 
   // Onwards!
   next();
@@ -32,41 +34,32 @@ app.set('trust proxy', 1);
 // Rate limit per IP address
 app.use(
   limit({
-    message: { status: 429, message: 'alright there cowboy, time to stop 🤠' },
+    message: 'alright there cowboy, time to stop 🤠',
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 100, // limit each IP to 100 requests per windowMs
   })
 );
 
-// Dead routes
-// app.use(duds, (req, res) => {
-//   res.json({ status: 404, message: 'Nothing to see here 👀' });
-// });
-
 // List items that are in the Tweet queue - only used internally
 app.get('/queue', (req, res) => {
   queue
     .list()
-    .then(items => res.json({ status: 200, items }))
+    .then(items => res.json({ items }))
     .catch(e => log.error(e));
 });
 
 // Make some tears
-app.get('/cry/*', (req, res) => {
-  const input = decodeURI(req.originalUrl.substr(5)).trim();
+app.post('/cry', ({ body }, res) => {
+  const { input } = body;
 
   if (input.length > 2000) {
-    return res.json({
-      status: 413,
-      message: "oh noes, that's too much string my guy (╥_╥)",
-    });
+    return res.status(413).send("oh noes, that's too much string my guy (╥_╥)");
   }
 
   cry(input)
     .then(tears => {
       queue.add({ input, tears });
-
-      res.json({ status: 200, input, tears });
+      res.json({ input, tears });
     })
     .catch(e => res.status(e.status || 400).send(e));
 });
