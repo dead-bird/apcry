@@ -30,39 +30,35 @@ app.set('trust proxy', 1);
 
 // Rate limit per IP address
 app.use(
-  limit({
-    message: { status: 429, message: 'alright there cowboy, time to stop 🤠' },
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // limit each IP to 100 requests per windowMs
-  })
+	limit({
+		message: 'alright there cowboy, time to stop 🤠',
+		windowMs: 15 * 60 * 1000, // 15 minutes
+		max: 100, // limit each IP to 100 requests per windowMs
+	})
 );
 
 // List items that are in the Tweet queue - only used internally
 app.get('/queue', (req, res) => {
-  queue
-    .list()
-    .then(items => res.json({ status: 200, items }))
-    .catch(e => log.error(e));
+	queue
+		.list()
+		.then((items) => res.json({ items }))
+		.catch((e) => log.error(e));
 });
 
 // Make some tears
 app.post('/cry', ({ body }, res) => {
 	const { input } = body;
 
-  if (input.length > 2000) {
-    return res.json({
-      status: 413,
-      message: "oh noes, that's too much string my guy (╥_╥)",
-    });
-  }
+	if (input.length > 2000) {
+		return res.status(413).send("oh noes, that's too much string my guy (╥_╥)");
+	}
 
-  cry(input)
-    .then(tears => {
-      queue.add({ input, tears });
-
-      res.json({ status: 200, input, tears });
-    })
-    .catch(e => res.status(e.status || 400).send(e));
+	cry(input)
+		.then((tears) => {
+			queue.add({ input, tears });
+			res.json({ input, tears });
+		})
+		.catch((e) => res.status(e.status || 400).send(e));
 });
 
 // Listen for connections
